@@ -20,6 +20,6 @@
         "js": ["content.js"]
     }, {
         "matches": ["*://developer.microsoft.com/*/microsoft-edge/*"],
-        "js": ["content-color.js"]
+        "js": ["content-size.js"]
     }]
 }
