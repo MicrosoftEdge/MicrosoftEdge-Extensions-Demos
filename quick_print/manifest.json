@@ -1,0 +1,28 @@
+{
+    "name": "Quick Print",
+    "version": "1.0.0.0",
+    "author": "Microsoft",
+
+    "icons": {
+        "24": "icon_24.png",
+        "48": "icon_48.png"
+    },
+
+    "permissions": [
+        "tabs",
+        "<all_urls>"
+    ],
+
+    "browser_action": {
+        "default_icon": {
+            "20": "icon_20.png",
+            "40": "icon_40.png"
+        },
+        "default_title": "Print!"
+    },
+
+    "background": {
+        "scripts": ["background.js"],
+        "persistent": false
+    }
+}
