@@ -26,4 +26,4 @@ Pages that match the content-size.js match pattern will also match the content.j
 This means that both scripts will be run on these pages.
 
 ## APIs used
-No extension APIs are used
+No extension APIs are used.
