@@ -30,7 +30,7 @@ This means that it will run on URLS that:
 Pages that match the `content-size.js` match pattern will also match the `content.js` match pattern.
 This means that both scripts will be run on these pages. 
 
-An example of a page that meets this match is [https://developer.microsoft.com/en-us/microsoft-edge/platform/](https://developer.microsoft.com/en-us/microsoft-edge/platform/).
+An example of a URL that meets this match is [https://developer.microsoft.com/en-us/microsoft-edge/platform/](https://developer.microsoft.com/en-us/microsoft-edge/platform/).
 
 ## APIs used
 No extension APIs are used.
