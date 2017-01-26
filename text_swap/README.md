@@ -25,7 +25,7 @@ This means that it will run on URLS that:
 - Start with HTTP or HTTPS 
 - Are only at `://developer.microsoft.com/`
 - Have any locale (Based on the developer.microsoft.com URL structure)
-- Have any path after `/microsoft-edge/`
+- Have any path under `/microsoft-edge/`
 
 Pages that match the `content-size.js` match pattern will also match the `content.js` match pattern.
 This means that both scripts will be run on these pages. 
