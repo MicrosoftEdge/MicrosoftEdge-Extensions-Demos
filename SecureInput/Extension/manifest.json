@@ -1,0 +1,33 @@
+{
+    "name" : "SecureInput",
+    "version" : "1.0.0.0",
+    "description" : "China online banking secure input reference implementation",
+    "author": "msft",
+
+    "background": {
+      "scripts": [ "background.js" ],
+      "persistent": true
+   },
+
+    "default_locale": "en_US",
+     
+    "content_scripts": [
+        {
+          "matches": ["*://*/secureinput*"],
+          "js": ["content.js"],
+          "run_at": "document_end"
+        }
+    ],
+
+    "permissions": [
+        "*://*/secureinput*",
+        "nativeMessaging",
+        "activeTab"
+    ],
+
+    "icons": {
+         "16": "icon_16.png",
+         "48": "icon_48.png",
+        "128": "icon_128.png"
+    }
+}
