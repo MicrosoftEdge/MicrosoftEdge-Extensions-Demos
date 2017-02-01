@@ -27,7 +27,7 @@ Note the registration of the `AppService` in the `package.appxmanifest` file tha
 
 JSON messages from the extension are stringified as a value in the first [KeyValue pair](https://msdn.microsoft.com//library/windows/apps/5tbh8a42) of the [ValueSet](https://msdn.microsoft.com/library/windows/apps/dn636131) object. 
 
-## UWP hosting AppService in the main app
+## UWP hosting AppService in the background task
 
 The only difference between hosting `AppService` in the main app and in the background task is that a background task has a few restrictions. See [Guidelines for background tasks](https://msdn.microsoft.com/windows/uwp/launch-resume/guidelines-for-background-tasks) to determine which option is ideal for your scenario.
 
