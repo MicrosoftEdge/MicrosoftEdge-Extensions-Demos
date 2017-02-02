@@ -1,5 +1,5 @@
 # SecureInput
-The SecureInput sample illustrates the use of Native Messaging APIs that allows an Edge extension to communicate with a companion Universal Windows Platform (UWP) application. It also include a [Desktop Bridge](https://developer.microsoft.com/windows/bridges/desktop)(Win32) component, which is written in C# to access functionality that isn't available to the extension or the UWP app.
+The SecureInput sample illustrates the use of Native Messaging APIs that allows an Edge extension to communicate with a companion Universal Windows Platform (UWP) application. It also include a [Desktop Bridge](https://developer.microsoft.com/windows/bridges/desktop) (Win32) component, which is written in C# to access functionality that isn't available to the extension or the UWP app.
 
 This sample has five main components:
 
@@ -12,7 +12,7 @@ This sample has five main components:
 
 ## Test web page
 
-The test web page (`SecureInput.html`) illustrates how to configure a website to interact with the content script of an extension. By using custom events, the web page can pass and receive messages from the content script of the extension, thereby allowing user input to be encrypted via the extension.
+The test web page ([`SecureInput.html`](./SecureInput.html)) illustrates how to configure a website to interact with the content script of an extension. By using custom events, the web page can pass and receive messages from the content script of the extension, thereby allowing user input to be encrypted via the extension.
 
 
 ## Edge extension
