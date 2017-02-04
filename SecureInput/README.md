@@ -22,7 +22,6 @@ This sample has five main components:
 
 The test web page ([`SecureInput.html`](./SecureInput.html)) illustrates how to configure a website to interact with the content script of an extension. By using custom events, the web page can pass and receive messages from the content script of the extension, thereby allowing user input to be encrypted via the extension. To test this example, you'll need to host this file.
 
-
 ### Edge extension
 
 The extension is a basic extension that uses both a background and content script. The content script's main functionality is to detect when the user is entering data that needs to be secured. The extension communicates this to the Desktop Bridge component via native messaging. When the user is ready to submit the data, the extension will return an encrypted value back to the website.
@@ -71,17 +70,18 @@ This can be done with two steps in Visual Studio:
  -	The `AppX` folder.
  -	The `AppXManifest.xml` based on the content of `package.manifest`. (The content of `package.manifest` in this sample has been edited to include the necessary entries for Edge extensions).
 2. Build the `PasswordInputProtection` Desktop Bridge.
+ 
  ![build desktop bridge](../media/builddesktopbridge.png)
 
  This will:
  -	Build the binaries for this project
  -	Trigger a post-build event that will copy the output of the exe to the `AppX` folder and copy the `Extension` folder to the `AppX` folder. For this example, this script is already added in the Build Events section of `PasswordInputProtection`'s Properties:
-```
-xcopy /y /s "$(SolutionDir)PasswordInputProtection\bin\$(ConfigurationName)\PasswordInputProtection.exe" "$(SolutionDir)\NativeMessagingHostInProcess\bin\x64\$(ConfigurationName)\AppX\"
-xcopy /y /s "$(SolutionDir)PasswordInputProtection\bin\$(ConfigurationName)\PasswordInputProtection.exe" "$(SolutionDir)\NativeMessagingHostInProcess\bin\x86\$(ConfigurationName)\AppX\"
-xcopy /y /s "$(SolutionDir)Extension" "$(SolutionDir)\NativeMessagingHostInProcess\bin\x64\$(ConfigurationName)\AppX\Extension\"
-xcopy /y /s "$(SolutionDir)Extension" "$(SolutionDir)\NativeMessagingHostInProcess\bin\x86\$(ConfigurationName)\AppX\Extension\"    
-```
+ ```
+ xcopy /y /s "$(SolutionDir)PasswordInputProtection\bin\$(ConfigurationName)\PasswordInputProtection.exe" "$(SolutionDir)\NativeMessagingHostInProcess\bin\x64\$(ConfigurationName)\AppX\"
+ xcopy /y /s "$(SolutionDir)PasswordInputProtection\bin\$(ConfigurationName)\PasswordInputProtection.exe" "$(SolutionDir)\NativeMessagingHostInProcess\bin\x86\$(ConfigurationName)\AppX\"
+ xcopy /y /s "$(SolutionDir)Extension" "$(SolutionDir)\NativeMessagingHostInProcess\bin\x64\$(ConfigurationName)\AppX\Extension\"
+ xcopy /y /s "$(SolutionDir)Extension" "$(SolutionDir)\NativeMessagingHostInProcess\bin\x86\$(ConfigurationName)\AppX\Extension\"    
+ ```
 
 Now that the files are all ready to go, you will need to register the AppX. There are two ways to accomplish this:
 
@@ -109,6 +109,7 @@ The UWP app will launch when the extension tries to connect to it using [native 
 2.	Select Properties
 
  ![properties option](../media/properties.png)
+ 
 3.	Check “Do not launch, but debug my code when it starts”
  ![selecting do not launch box](../media/donotlaunch.png)
 
