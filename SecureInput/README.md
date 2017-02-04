@@ -76,12 +76,12 @@ This can be done with two steps in Visual Studio:
  This will:
  -	Build the binaries for this project
  -	Trigger a post-build event that will copy the output of the exe to the `AppX` folder and copy the `Extension` folder to the `AppX` folder. For this example, this script is already added in the Build Events section of `PasswordInputProtection`'s Properties:
- ```
- xcopy /y /s "$(SolutionDir)PasswordInputProtection\bin\$(ConfigurationName)\PasswordInputProtection.exe" "$(SolutionDir)\NativeMessagingHostInProcess\bin\x64\$(ConfigurationName)\AppX\"
- xcopy /y /s "$(SolutionDir)PasswordInputProtection\bin\$(ConfigurationName)\PasswordInputProtection.exe" "$(SolutionDir)\NativeMessagingHostInProcess\bin\x86\$(ConfigurationName)\AppX\"
- xcopy /y /s "$(SolutionDir)Extension" "$(SolutionDir)\NativeMessagingHostInProcess\bin\x64\$(ConfigurationName)\AppX\Extension\"
- xcopy /y /s "$(SolutionDir)Extension" "$(SolutionDir)\NativeMessagingHostInProcess\bin\x86\$(ConfigurationName)\AppX\Extension\"    
- ```
+  ```
+  xcopy /y /s "$(SolutionDir)PasswordInputProtection\bin\$(ConfigurationName)\PasswordInputProtection.exe" "$(SolutionDir)\NativeMessagingHostInProcess\bin\x64\$(ConfigurationName)\AppX\"
+  xcopy /y /s "$(SolutionDir)PasswordInputProtection\bin\$(ConfigurationName)\PasswordInputProtection.exe" "$(SolutionDir)\NativeMessagingHostInProcess\bin\x86\$(ConfigurationName)\AppX\"
+  xcopy /y /s "$(SolutionDir)Extension" "$(SolutionDir)\NativeMessagingHostInProcess\bin\x64\$(ConfigurationName)\AppX\Extension\"
+  xcopy /y /s "$(SolutionDir)Extension" "$(SolutionDir)\NativeMessagingHostInProcess\bin\x86\$(ConfigurationName)\AppX\Extension\"    
+  ```
 
 Now that the files are all ready to go, you will need to register the AppX. There are two ways to accomplish this:
 
@@ -105,12 +105,14 @@ Once the solution is deployed, the extension will be installed in Edge. Checkout
 
 ### Debugging the UWP app
 The UWP app will launch when the extension tries to connect to it using [native messaging APIs](https://developer.mozilla.org/Add-ons/WebExtensions/API/runtime/connectNative). You’ll need to debug the UWP app only once the process starts. This can be configured via the project’s property page:
+
 1.	In Visual Studio, right click your `NativeMessagingHostInProcess` project
 2.	Select Properties
 
  ![properties option](../media/properties.png)
  
-3.	Check “Do not launch, but debug my code when it starts”
+3.	Check "Do not launch, but debug my code when it starts"
+
  ![selecting do not launch box](../media/donotlaunch.png)
 
 You can now set breakpoints in the code where you want to debug and launch the debugger by pressing F5. Once you interact with the extension to connect to the UWP app, Visual Studio will automatically attach to the process.
