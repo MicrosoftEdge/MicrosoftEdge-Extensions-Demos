@@ -49,52 +49,31 @@ To get started with converting a Win32 to Desktop Bridge app, head [here](https:
 
 
 ## Deploying
-The solution is currently configured with `NativeMessagingHostInProcess` as the companion UWP. After you’ve set this as your startup project, do a rebuild to build the Desktop Bridge component(`PasswordInputProtection`).
+The solution is currently configured with `NativeMessagingHostInProcess` as the companion UWP. 
+
+The goal of the deployment is to make sure that the Extension and Win32 files are copied to the relevant folders in the packaging location.
 
 
+This can be done with via the following steps in Visual Studio:
 
-The goal of the deployment is to set up an `AppX` folder with all the necessary files, which will include:
-
--	`Extension` folder
--	`AppXManifest.xml` (with the right properties for extension)
--	UWP binaries (exe, dlls) and visual assets (Assets and Properties folders)
--	Desktop Bridge binaries (exe, dlls)
-
-This can be done with two steps in Visual Studio:
-
-1.	Build and deploy the `NativeMessagingHostinProcess` UWP app.
+1.	Add a new `Extension` folder to `NativeMessagingHostInProcess` project. Add all the extension files link (instead of local copy) so any changes are reflected in the package. Make sure the properties for them are set to `Build Action`=`Content` and `Copy to Output Directory`=`Copy Always`. 
+2.	Add a new `Win32` folder to `NativeMessagingHostInProcess` project and modify the `NativeMessagingHostInProcess` .csproj file to include a PostBuild event to copy all the Win32 binaries to the Win32 folder.
+3.	Update `package.manifest` to point to the Win32 binary in the `Win32` folder.
+4.	Build and deploy the `NativeMessagingHostinProcess` UWP app.
  ![build inprocess project](../media/buildnativemessaginghostinprocess.png)
 
  This will generate:
  -	Necessary binaries and files needed for the UWP app.
  -	The `AppX` folder.
  -	The `AppXManifest.xml` based on the content of `package.manifest`. (The content of `package.manifest` in this sample has been edited to include the necessary entries for Edge extensions).
-2. Build the `PasswordInputProtection` Desktop Bridge.
- 
- ![build desktop bridge](../media/builddesktopbridge.png)
-
- This will:
- -	Build the binaries for this project
- -	Trigger a post-build event that will copy the output of the exe to the `AppX` folder and copy the `Extension` folder to the `AppX` folder. For this example, this script is already added in the Build Events section of `PasswordInputProtection`'s Properties:
-  ```
-  xcopy /y /s "$(SolutionDir)PasswordInputProtection\bin\$(ConfigurationName)\PasswordInputProtection.exe" "$(SolutionDir)\NativeMessagingHostInProcess\bin\x64\$(ConfigurationName)\AppX\"
-  xcopy /y /s "$(SolutionDir)PasswordInputProtection\bin\$(ConfigurationName)\PasswordInputProtection.exe" "$(SolutionDir)\NativeMessagingHostInProcess\bin\x86\$(ConfigurationName)\AppX\"
-  xcopy /y /s "$(SolutionDir)Extension" "$(SolutionDir)\NativeMessagingHostInProcess\bin\x64\$(ConfigurationName)\AppX\Extension\"
-  xcopy /y /s "$(SolutionDir)Extension" "$(SolutionDir)\NativeMessagingHostInProcess\bin\x86\$(ConfigurationName)\AppX\Extension\"    
-  ```
-
-Now that the files are all ready to go, you will need to register the AppX. There are two ways to accomplish this:
-
--	Run `Add-AppxPackage` from PowerShell:
-`Add-AppxPackage -register [Path to AppX folder]\AppxManifest.xml`
-
- or
-
--	Deploy the `NativeMessagingHostInProcess` project. Visual Studio will run the same PowerShell script to register the AppX from the folder.
 
 Once the solution is correctly deployed, you should see the extension in Edge.
 
 ![extension showing in Edge](../media/secureextension.png)
+
+## Creating AppX package for Store submission
+The steps for creating an AppX package is similar to how one would [create a UWP package using Visual Studio](https://docs.microsoft.com/en-us/windows/uwp/packaging/packaging-uwp-apps#create-an-app-package).
+
 
 ## Debugging
 The instructions for debugging vary depending on which component you want to test out:
