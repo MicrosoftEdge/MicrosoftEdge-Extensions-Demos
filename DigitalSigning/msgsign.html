@@ -1,0 +1,55 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Edge Online Banking Digital Signing Demo</title>
+    <script language="javascript" type="text/javascript">
+
+        function SignOnClick() {
+            var text = document.getElementById("OriginalText").value;
+            var event = new CustomEvent('SignRequest', { 'detail': text });
+            document.dispatchEvent(event);
+        }
+
+        document.addEventListener('SignResponse',
+        function (e) {
+            document.getElementById("Signature").value = e.detail;
+        }, false);
+
+    </script>
+</head>
+<body>
+    <table border="0" cellpadding="0" cellspacing="0">
+        <tr>
+            <td>
+                <h1>Message Digital Signing</h1>
+            </td>
+        </tr>
+    </table>
+    <tr>
+        <input type="button" id="ConnectButton" name="ConnectButton" value="Connect">
+        <input type="button" id="DisconnectButton" name="DisconnectButton" value="Disconnect" disabled>
+    </tr>
+    <hr />
+    <label>
+        <h3>Message Signing</h3>
+    </label>
+    <label>
+        Original Text：
+        <br />
+        <textarea id="OriginalText" rows="8" style="width: 650px"></textarea>
+    </label>
+    <label>
+        <br>
+        <input type="button" id="SignButton" onclick="SignOnClick()" name="SignButton" value="Sign" disabled>
+    </label>
+    <br />
+    <br />
+    <label>
+        Signature：
+        <br />
+        <textarea id="Signature" rows="8" style="width: 650px"></textarea>
+    </label>
+    <br />
+</body>
+</html>
