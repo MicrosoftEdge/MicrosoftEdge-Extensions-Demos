@@ -1,4 +1,4 @@
-# SecureInput
+# DigitalSigning
 
 ## About the sample
 
@@ -20,7 +20,9 @@ This sample has five main components:
 
 ### Test web page
 
-The test web page ([`msgsign.html`](./msgsign.html)) illustrates how to configure a website to interact with the content script of an extension. By using custom events, the web page can pass and receive messages from the content script of the extension, thereby allowing user input to be encrypted via the extension. To test this example, you'll need to host this file.
+The test web page ([`msgsign.html`](./msgsign.html)) illustrates how to configure a website to interact with the content script of an extension. By using custom events, the web page can pass and receive messages from the content script of the extension, thereby allowing user input to be encrypted via the extension. To test this example, you'll need to host this file in IIS.
+
+In addition, you will need to add the certificate ([`test_oca21_client_password11111111.pfx`](./test_oca21_client_password11111111.pfx)) to your certificate store, with the following password : `11111111`. 
 
 ### Edge extension
 
@@ -66,6 +68,7 @@ This can be done with via the following steps in Visual Studio (as set up in the
     <Copy SourceFiles="..\$(Configuration)\DigitalSigning.exe" DestinationFolder="win32" />
     <Copy SourceFiles="..\$(Configuration)\DigitalSigning.pdb" DestinationFolder="win32" />
   </Target>
+  ```
 
 4.	Update `package.manifest` to point to the Win32 binary in the `Win32` folder.
 5.	Build and deploy the `NativeMessagingHostinProcess` UWP app.
