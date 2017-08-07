@@ -72,18 +72,19 @@ This can be done with via the following steps in Visual Studio (as set up in the
 1.	Add a new `Extension` folder to `NativeMessagingHostInProcess` project. Add all the extension files link (instead of local copy) so any changes are reflected in the package. Make sure the properties for them are set to `Build Action` = `Content` and `Copy to Output Directory` = `Copy Always`. 
 2. Add a new `Win32` folder to `NativeMessagingHostInProcess` project and add the necessary Win32 binaries to this folder. 
 3. Since VS' default configuration for Win32 project is to place x64 binaries in a different folder structure compared to x86, we need to modify the project configuration so both x64 and x86 bits are binplaced to the same folder structure. This is accomplished by changing the default value of `Output File` to `$(SolutionDir)$(Configuration)\$(TargetName)$(TargetExt)` and `Generate Program Database File` to `$(SolutionDir)$(Configuration)\$(TargetName)$(TargetExt)`. 
-4. Modify the **NativeMessagingHostInProcess.csproj** file to include a PostBuild event to copy all the generated Win32 binaries to the Win32 folder.
- ```xml
-  <Target Name="AfterBuild">
-    <Copy SourceFiles="..\$(Configuration)\DigitalSigning.exe" DestinationFolder="win32" />
-    <Copy SourceFiles="..\$(Configuration)\DigitalSigning.pdb" DestinationFolder="win32" />
-  </Target>
-  ```
+4. Modify the **NativeMessagingHostInProcess.csproj** file to include a PostBuild event to copy all the generated Win32 binaries to the Win32 folder."`:
+
+    ```xml
+    <Target Name="AfterBuild">
+      <Copy SourceFiles="..\$(Configuration)\DigitalSigning.exe" DestinationFolder="win32" />
+      <Copy SourceFiles="..\$(Configuration)\DigitalSigning.pdb" DestinationFolder="win32" />
+    </Target>
+    ```
 
 5.	Update **package.manifest** to point to the Win32 binary in the `Win32` folder.
 6.	Build and deploy the `NativeMessagingHostinProcess` UWP app.
-  
-  ![build inprocess project](../media/buildnativemessaginghostinprocess.png)
+
+    ![build inprocess project](../media/buildnativemessaginghostinprocess.png)
 
  This will generate:
  -	Necessary binaries and files needed for the UWP app.
@@ -110,12 +111,12 @@ The UWP app will launch when the extension tries to connect to it using [native 
 
 1.	In Visual Studio, right click your `NativeMessagingHostInProcess` project
 2.	Select Properties
- 
- ![properties option](../media/properties.png)
+
+    ![properties option](../media/properties.png)
  
 3.	Check "Do not launch, but debug my code when it starts"
 
- ![selecting do not launch box](../media/donotlaunch.png)
+    ![selecting do not launch box](../media/donotlaunch.png)
 
 You can now set breakpoints in the code where you want to debug and launch the debugger by pressing F5. Once you interact with the extension to connect to the UWP app, Visual Studio will automatically attach to the process.
 
