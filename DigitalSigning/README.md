@@ -6,7 +6,7 @@ The DigitalSigning sample illustrates the use of Native Messaging APIs that allo
 
 Once the sample is deployed and the user has established the connection between the extension and the UWP app by selecting "connect", they'll be able to sign a text with a certificate that was installed on the machine.
 
-![website running that has a user enter a password and then become encrypted](../media/digitalsigningsamplerunning.png)
+![website running that has a user enter a password and then become encrypted](../media/digitalsigningsamplerunning.PNG)
 
 
 This sample has five main components:
@@ -110,7 +110,7 @@ The UWP app will launch when the extension tries to connect to it using [native 
 
 1.	In Visual Studio, right click your `NativeMessagingHostInProcess` project
 2.	Select Properties
-
+ 
  ![properties option](../media/properties.png)
  
 3.	Check "Do not launch, but debug my code when it starts"
