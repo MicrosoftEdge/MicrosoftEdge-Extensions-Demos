@@ -20,7 +20,7 @@ This sample has five main components:
 
 ### Test web page
 
-The test web page ([`SecureInput.html`](./SecureInput.html)) illustrates how to configure a website to interact with the content script of an extension. By using custom events, the web page can pass and receive messages from the content script of the extension, thereby allowing user input to be encrypted via the extension. To test this example, you'll need to host this file.
+The test web page ([`secureinput.html`](./SecureInput.html)) illustrates how to configure a website to interact with the content script of an extension. By using custom events, the web page can pass and receive messages from the content script of the extension, thereby allowing user input to be encrypted via the extension. To test this example, you'll need to host this file.
 
 ### Edge extension
 
