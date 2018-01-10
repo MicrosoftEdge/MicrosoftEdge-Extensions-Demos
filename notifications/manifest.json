@@ -1,0 +1,20 @@
+{
+  "manifest_version": 2,
+
+  "name": "Notifications example",
+  "description": "Sample extension for notifications",
+  "version": "1.0",
+  "author":  "Microsoft",
+
+  "browser_action": {
+    "default_title":  "Notification example",
+    "default_icon": { "20": "icon.png" }
+  },
+  "background": {
+    "page": "background.html",
+    "persistent": true
+  },
+  "permissions": [
+    "notifications"
+  ]
+}
