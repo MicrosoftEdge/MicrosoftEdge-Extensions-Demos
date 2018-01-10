@@ -1,12 +1,12 @@
 # Notifications
 
 This Microsoft Edge extension sample shows the effects of all the Notifications APIs.
-Used in the bagkround script, these APIs create, update, and close notifications. 
+Used in the background script here, these API calls create, update, clear, and get info about notifications. 
 
 ## Behavior
 
 Once you've sideloaded this extension, click on the browser action icon to trigger a notification.
-Each click of the browser action icon will cycle eight different Notification API calls.
+Each click of the browser action icon will cycle through eight different Notification API calls.
 
 1. Triggers an alert stating the notification permission level.
 2. Creates a basic notification that displays a title, message, and two buttons.
