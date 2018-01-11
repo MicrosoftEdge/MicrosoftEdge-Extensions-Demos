@@ -9,7 +9,7 @@ var allNotificationOptions = {
     "buttons": [{ "title": "Title1", "iconUrl": "icon1.png" }, { "title": "Title2", "iconUrl": "icon2.png" }], // Max 2 buttons supported.
     "imageUrl": "image.png",                               // Only supported for image type notifications.
     "items": [{ "title": "Item1", "message": "Message1" }, { "title": "Item2", "message": "Message2" }], // Max 5 items supported. Only for list type notifications.
-    "progress": 10,                                        // Values supported in the range [0-100].
+    "progress": 10,                                        // Values supported in the range [0-100]. Only for progress type notifications.
     "requireInteraction": false                            // Values supported: [true, false].
 };
 
