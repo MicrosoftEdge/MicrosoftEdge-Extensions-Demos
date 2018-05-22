@@ -9,8 +9,8 @@ This example extension will allow you to manipulate specific CSS for [docs.micro
 The sample was intended to be used with the [Creating a Microsoft Edge extension](https://docs.microsoft.com/microsoft-edge/extensions/guides/creating-an-extension) guide. 
 
 ## APIs used
-* [tabs.insertCSS()](https://developer.mozilla.org/Add-ons/WebExtensions/API/tabs/insertCSS)
+* [`tabs.insertCSS()`](https://developer.mozilla.org/Add-ons/WebExtensions/API/tabs/insertCSS)
 * [`runtime.sendMessage()`](https://developer.mozilla.org/Add-ons/WebExtensions/API/runtime/sendMessage)
 * [`runtime.onMessage`](https://developer.mozilla.org/Add-ons/WebExtensions/API/runtime/onmessage)
 * [`browserAction.setIcon()`](https://developer.mozilla.org/Add-ons/WebExtensions/API/browserAction/setIcon)
-* [`browserAction.disable`](https://developer.mozilla.org//Add-ons/WebExtensions/API/browserAction/disable)
+* [`browserAction.disable`](https://developer.mozilla.org/Add-ons/WebExtensions/API/browserAction/disable)
