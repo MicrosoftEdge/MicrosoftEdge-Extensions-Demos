@@ -1,0 +1,15 @@
+/* main styles */
+* {
+    font-family: 'Segoe UI';
+}
+
+h1 {
+    font-weight: 600;
+    font-size: .9em;
+}
+
+p {
+    font-weight: 500;
+    font-size: .8em;
+    margin-bottom: 10px;  
+}
