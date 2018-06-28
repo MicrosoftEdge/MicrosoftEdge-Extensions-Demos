@@ -28,6 +28,7 @@ namespace NativeMessagingHostInProcess
     {
         private BackgroundTaskDeferral appServiceDeferral = null;
         private AppServiceConnection connection = null;
+        private AppServiceConnection edgeConnection = null;
         private BackgroundTaskDeferral desktopBridgeAppServiceDeferral = null;
         private AppServiceConnection desktopBridgeConnection = null;
         private bool desktopBridgeAppLaunched = true;
@@ -77,13 +78,16 @@ namespace NativeMessagingHostInProcess
                         desktopBridgeAppServiceDeferrals.Add(desktopBridgeConnectionIndex, this.desktopBridgeAppServiceDeferral);
                         desktopBridgeConnectionIndex++;
                     }
+
+                    // wait before configuring RequestReceived
+                    this.edgeConnection.RequestReceived += OnAppServiceRequestReceived;
                 }
                 else // App service connection from Edge browser
                 {
                     this.appServiceDeferral = taskInstance.GetDeferral(); // Get a deferral so that the service isn't terminated.
                     taskInstance.Canceled += OnAppServicesCanceled; // Associate a cancellation handler with the background task.
                     this.connection = appService.AppServiceConnection;
-                    this.connection.RequestReceived += OnAppServiceRequestReceived;
+                    this.edgeConnection = this.connection;
                     this.connection.ServiceClosed += AppServiceConnection_ServiceClosed;
 
                     lock (thisLock)
@@ -120,7 +124,10 @@ namespace NativeMessagingHostInProcess
             {
                 if (this.desktopBridgeAppLaunched)
                 {
-                    this.currentConnectionIndex = Int32.Parse(sender.AppServiceName);
+                    lock (thisLock)
+                    {
+                        this.currentConnectionIndex = Int32.Parse(sender.AppServiceName);
+                    }
                     this.desktopBridgeConnection = desktopBridgeConnections[this.currentConnectionIndex];
 
                     // Send message to the desktopBridge component and wait for response
