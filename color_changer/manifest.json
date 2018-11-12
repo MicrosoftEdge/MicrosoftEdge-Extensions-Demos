@@ -1,7 +1,7 @@
 {
   "name": "Color Changer",
   "author": "Microsoft Edge Extension Developer",
-  "description": "Change the color of the header on docs.microsoft.com",
+  "description": "Change the color of the body on docs.microsoft.com",
   "version": "1.0",
   "icons": {
     "25": "images/color-changer25.png",
