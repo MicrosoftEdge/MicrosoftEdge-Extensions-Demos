@@ -37,6 +37,7 @@
    * Listen for messages from the background script.
    * Call "beastify()" or "reset()".
   */
+  let browser = chrome || browser;
   browser.runtime.onMessage.addListener((message) => {
     if (message.command === "beastify") {
       insertBeast(message.beastURL);

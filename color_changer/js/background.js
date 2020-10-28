@@ -1,3 +1,5 @@
+let browser = chrome || browser;
+
 // listen for sendMessage() from content script
 browser.runtime.onMessage.addListener(
     function (request, sender, sendResponse) {
