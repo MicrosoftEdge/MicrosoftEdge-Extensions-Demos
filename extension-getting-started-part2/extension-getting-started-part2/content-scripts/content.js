@@ -1,4 +1,4 @@
-chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
+chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
   $("head").prepend(
     `<style>
        .slide-image {
@@ -11,7 +11,7 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
     `<img  src="${request.url}" id="${request.imageDivId}" 
            class="slide-image" /> `
   );
-  $(`#${request.imageDivId}`).click(function() {
+  $(`#${request.imageDivId}`).click(function () {
     $(`#${request.imageDivId}`).remove(`#${request.imageDivId}`);
   });
   sendResponse({ fromcontent: "This message is from content.js" });
