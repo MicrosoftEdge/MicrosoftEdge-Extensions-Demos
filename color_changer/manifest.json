@@ -1,0 +1,33 @@
+{
+  "name": "Color Changer",
+  "author": "Microsoft Edge Extension Developer",
+  "description": "Change the color of the body on docs.microsoft.com",
+  "version": "1.0",
+  "icons": {
+    "25": "images/color-changer25.png",
+    "48": "images/color-changer48.png"
+  },
+  "permissions": [
+    "*://docs.microsoft.com/*",
+    "tabs"
+  ], 
+  "browser_action": {
+    "default_icon": {
+      "20": "images/color-changer20.png",
+      "40": "images/color-changer40.png"
+    },
+    "default_title": "Color Changer",
+    "default_popup": "popup.html"
+  },
+  "content_scripts": [{
+    "matches": [
+        "<all_urls>"
+    ],
+    "js": ["js/content.js"],
+    "run_at": "document_end"
+}],
+  "background": {
+    "scripts": ["js/background.js"],
+    "persistent": true
+  }
+}
