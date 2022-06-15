@@ -1,6 +1,6 @@
 {
   "name": "NASA Picture of the day viewer",
-  "version": "0.0.0.2",
+  "version": "0.0.0.1",
   "manifest_version": 3,
   "description": "A chromium extension to show NASA's Picture of the Day.",
   "icons": {
