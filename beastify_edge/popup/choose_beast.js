@@ -12,6 +12,7 @@ const hidePage = `body > :not(.beastify-image) {
  */
 function listenForClicks() {
   document.addEventListener("click", function(e) {
+    let browser = chrome || browser;
     /**
      * Given the name of a beast, get the URL to the corresponding image.
      */
@@ -74,5 +75,6 @@ function listenForClicks() {
  * When the popup loads, inject a content script into the active tab,
  * and add a click handler.
  */
+let browser = chrome || browser;
 browser.tabs.executeScript({file: "/content_scripts/beastify.js"});
 listenForClicks();
