@@ -5,7 +5,7 @@ if (sendMessageId) {
       chrome.tabs.sendMessage(
         tabs[0].id,
         {
-          url: chrome.extension.getURL("images/stars.jpeg"),
+          url: chrome.runtime.getURL("images/stars.jpeg"),
           imageDivId: `${guidGenerator()}`,
           tabId: tabs[0].id
         },
